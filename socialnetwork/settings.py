@@ -87,6 +87,10 @@ REST_FRAMEWORK = {
 }
 
 
+AUTHENTICATION_BACKEND = [
+    'users.custom_authentication.CaseSensitiveEmailBackend'
+]
+
 DATABASES = {
     # 'default': {
     #     'ENGINE': 'django.db.backends.sqlite3',
