@@ -17,10 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from users.views import RegisterUser, LoginUser
+from social_network_app.views import SearchOtherUsers, FriendRequestView, ListFriendsView, ListPendingFriendRequestsView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', RegisterUser.as_view(), name='register'),
     path('login/', LoginUser.as_view(), name='login'),
+    path('search/', SearchOtherUsers.as_view(), name='search'),
+    path('friend-request/', FriendRequestView.as_view(), name='send_friend_request'),
+    path('friend-request/<int:friend_request_id>/', FriendRequestView.as_view(), name='respond_friend_request'),
+    path('friends/', ListFriendsView.as_view(), name='list_friends'),
+    path('friend-requests/pending/', ListPendingFriendRequestsView.as_view(), name='list_pending_friend_requests'),
 ]
